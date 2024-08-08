@@ -1,21 +1,32 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class Table {
-    public Table[] tableNumber;
     public int seats;
     public String description;
+    private Map<Integer, Boolean> tables;
 
     public Table(Table[] tableNumber, int seats, String description) {
-        this.tableNumber = tableNumber;
         this.seats = seats;
         this.description = description;
     }
-
-    public boolean isAvailable(){
-        
+    public void tableNumber(int numberOfTables) {
+        tables = new HashMap<>();
+        for (int i = 1; i <= numberOfTables; i++) {
+            tables.put(i, true);
+        }
+    }
+    public boolean bookTable(int tableNumber) {
+        if (isAvailable(tableNumber)) {
+            tables.put(tableNumber, false); 
+            return true;
+        }
+        return false;
     }
 
-    @Override
-    public String toString() {
-        return "Table [tableNumber=" + tableNumber + ", seats=" + seats + ", description=" + description + "]";
+    public boolean isAvailable(int tableNumber) {
+        return tables.getOrDefault(tableNumber, false);
     }
+
     
 }

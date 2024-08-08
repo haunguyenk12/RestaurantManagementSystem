@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class Restaurant {
     public String name;
     public String address;
@@ -18,4 +21,5 @@ public class Restaurant {
     public void findAvailableTable(){
         
     }
+    
 }
